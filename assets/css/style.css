@@ -16,7 +16,6 @@ aside{
 main{
     height: 95vh;
     border: 1px solid black;
-
 }
 
 #weatherContainer{
@@ -25,16 +24,18 @@ main{
 
 #currentDay{
     height: 70%;
+    border: 1px solid black;
 }
 
 #fiveDayForecast{
     display: flex;
+    height: fit-content;
     justify-content: space-around;
     list-style: none;
 }
 
 #fiveDayForecast li{
-    width: 50px;
-    height: 20px;
+    width: 15%;
+    height: 150px;
     border: 1px solid black;
 }
