@@ -12,6 +12,10 @@
     
     <!-- my personal css -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
 </head>
 <body>
     <header class="container">
@@ -38,9 +42,9 @@
     
                 <div id="currentDay">
                     <div id="largeInfoHolder">
-                        <h2>City Name</h2>
+                        <h2 id="mainCity">City Name</h2>
                         <h1 id="mainTemp">24°</h1>
-                        <p>Wind: <mainWind></mainWind> | Humidity: <mainHumidity></mainHumidity></p>
+                        <p>Wind: <mainWind></mainWind>mph | Humidity: <mainHumidity></mainHumidity>%</p>
                         
 
                     </div>
@@ -123,6 +127,7 @@
         </div>
 
     </main>
-    
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
