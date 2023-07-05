@@ -21,8 +21,8 @@ function generateHTML(data){
 function renderCurrentMainCity(data){
     $('#mainCity').text(data.city.name);
     //transform temp to only two decimal places
-    $('#mainTemp').text(`${data.list[0].main.temp}°C`);
-    //transform to remove HH MM SS
+    $('#mainTemp').text(`${(data.list[0].main.temp).toFixed()}°C`);
+    //transform from default date to MMMM D, YYYY
     $('#currentDate').text(dateWithNoTime(data.list[0].dt_txt));
     $('mainWind').text(data.list[0].wind.speed);
     $('mainHumidity').text(data.list[0].main.humidity);
@@ -35,10 +35,12 @@ function renderFiveDayForecast(data){
 
             var singleLiEl = $("<li>");
             $("#fiveDayForecast").append(singleLiEl);
+            
             //transform from YYYY MM DD hh:mm:ss -> DDD using DAYJS
             singleLiEl.append($("<h5>").text(dateToShortDay(data.list[index].dt_txt)));
+            
             //tranform to temperature with no decimal places
-            singleLiEl.append($("<smallTemp>").text(`${data.list[index].main.temp}°C`));
+            singleLiEl.append($("<smallTemp>").text(`${(data.list[index].main.temp).toFixed()}°C`));
 
             singleLiEl.append($("<div>",{"class":"smallLabels"})
                             .append(
