@@ -6,11 +6,13 @@
 header{
     height: 5vh;
     border: 1px solid black;
+    text-align: end;
 }
 
 aside{
     height: 95vh;
     border: 1px solid black;
+    text-align: center;
 }
 
 main{
@@ -87,4 +89,13 @@ smallTemp{
 .toast{
     position: absolute;
     top:5vh;
+}
+
+#search{
+    margin: 5px 0;
+    width: 100%;
+}
+
+.city{
+    margin: 2px 0;
 }

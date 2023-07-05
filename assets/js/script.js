@@ -89,6 +89,13 @@ function lookForCity(event){
     fetchThedata(mainCity);
 }
 
+function switchCity(event){
+    mainCity = (event.target).textContent;
+    eraseOldForecast();
+    fetchThedata(mainCity);
+
+}
+
 function hideToast(event){
     event.preventDefault();
     $(".toast").addClass("hide");
@@ -96,5 +103,7 @@ function hideToast(event){
 
 // event listeners
 $("aside").on("click","#search",lookForCity);
+$("aside").on("click",".city",switchCity);
+
 
 $(".toast").on("click",".btn-clear",hideToast);
