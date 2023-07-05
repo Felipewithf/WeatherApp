@@ -1,22 +1,25 @@
-var getUrl = "https://api.openweathermap.org/data/2.5/forecast?id=3686110&units=metric&appid=aadc9fe8c2258ddedabb7ac0233418e8"
 
-fetch(getUrl)
+var mainCity = "toronto";
+
+fetchThedata(mainCity);
+
+function fetchThedata(city){
+
+    var getUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=aadc9fe8c2258ddedabb7ac0233418e8`
+
+    fetch(getUrl)
     .then((Response)=>{
         return Response.json();
         })
         .then((data)=>{
-            console.log(data.city.name);
             generateHTML(data);
             });
-
-
-function generateHTML(data){
-
-    renderCurrentMainCity(data);
-
-    renderFiveDayForecast(data);
 }
 
+function generateHTML(data){
+    renderCurrentMainCity(data);
+    renderFiveDayForecast(data);
+}
 
 function renderCurrentMainCity(data){
     $('#mainCity').text(data.city.name);
@@ -27,7 +30,6 @@ function renderCurrentMainCity(data){
     $('mainWind').text(data.list[0].wind.speed);
     $('mainHumidity').text(data.list[0].main.humidity);
 }
-
 
 function renderFiveDayForecast(data){
 
@@ -56,6 +58,8 @@ function renderFiveDayForecast(data){
  
 }
 
+//utility functions
+
 function dateToShortDay(date){
     return dayjs(date).format('ddd');
 }
@@ -63,3 +67,16 @@ function dateToShortDay(date){
 function dateWithNoTime(date){
     return dayjs(date).format('MMMM D, YYYY')
 }
+
+function eraseOldForecast(){
+    var liToDelete = $("#fiveDayForecast").children().remove();
+}
+
+function lookForCity(event){
+    mainCity = $("#input-city").val();
+    eraseOldForecast();
+    fetchThedata(mainCity);
+}
+
+// event listeners
+$("aside").on("click","#search",lookForCity);
