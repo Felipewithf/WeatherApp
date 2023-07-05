@@ -25,6 +25,17 @@ main{
 #currentDay{
     height: 70%;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+#largeInfoHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    
 }
 
 #fiveDayForecast{
@@ -37,5 +48,34 @@ main{
 #fiveDayForecast li{
     width: 15%;
     height: 150px;
+    padding-left: 5px;
+    position: relative;
     border: 1px solid black;
+}
+
+smallTemp{
+ position: absolute;
+ right: 0;
+ top: -15px;
+ font-size: 2rem;
+}
+
+.smallLabels{
+    position: absolute;
+    bottom: 0;
+}
+
+.smallInfo{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+#fiveDayForecast li p{
+    line-height: 0%;
+}
+
+#mainTemp{
+    font-size: 5rem;
 }
