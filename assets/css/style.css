@@ -79,3 +79,12 @@ smallTemp{
 #mainTemp{
     font-size: 5rem;
 }
+
+.hide{
+    display: none;
+}
+
+.toast{
+    position: absolute;
+    top:5vh;
+}

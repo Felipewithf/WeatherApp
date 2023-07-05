@@ -8,8 +8,13 @@ function fetchThedata(city){
     var getUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=aadc9fe8c2258ddedabb7ac0233418e8`
 
     fetch(getUrl)
-    .then((Response)=>{
-        return Response.json();
+    .then((response)=>{
+        if (response.status === 404) {
+            displayErrorToast();
+            return;
+          }else{
+        return response.json();
+          }
         })
         .then((data)=>{
             generateHTML(data);
@@ -58,6 +63,12 @@ function renderFiveDayForecast(data){
  
 }
 
+function displayErrorToast(){
+    $(".toast").removeClass("hide");
+    var mainCity = "toronto";
+    fetchThedata(mainCity);
+}
+
 //utility functions
 
 function dateToShortDay(date){
@@ -69,7 +80,7 @@ function dateWithNoTime(date){
 }
 
 function eraseOldForecast(){
-    var liToDelete = $("#fiveDayForecast").children().remove();
+    $("#fiveDayForecast").children().remove();
 }
 
 function lookForCity(event){
@@ -78,5 +89,12 @@ function lookForCity(event){
     fetchThedata(mainCity);
 }
 
+function hideToast(event){
+    event.preventDefault();
+    $(".toast").addClass("hide");
+}
+
 // event listeners
 $("aside").on("click","#search",lookForCity);
+
+$(".toast").on("click",".btn-clear",hideToast);
