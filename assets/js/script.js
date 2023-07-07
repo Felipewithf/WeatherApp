@@ -42,8 +42,11 @@ function renderCurrentMainCity(data) {
     $('#mainTemp').text(`${(data.main.temp).toFixed()}°C`);
     //transform from default date to MMMM D, YYYY
     $('#currentDate').text(dateWithNoTime());
+    $('#currentWeather').text(`${data.weather[0].main}`);
     $('mainWind').text(data.wind.speed);
     $('mainHumidity').text(data.main.humidity);
+    $('#mainImage').attr("src",`assets/img/${data.weather[0].icon}_f.png`);
+
 }
 
 function renderFiveDayForecast(data) {
@@ -61,11 +64,13 @@ function renderFiveDayForecast(data) {
 
         singleLiEl.append($("<div>", { "class": "smallLabels" })
             .append(
+                $("<p>").text("Weather:"),
                 $("<p>").text("Wind:"),
                 $("<p>").text("Humidity:")
             ));
         singleLiEl.append($("<div>", { "class": "smallInfo" })
             .append(
+                $("<p>").text(`${data.list[index].weather[0].main}`),
                 $("<p>").text(`${data.list[index].main.humidity} mph`),
                 $("<p>").text(`${data.list[index].main.humidity} %`)
             ));

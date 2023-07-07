@@ -19,6 +19,9 @@
 </head>
 <body>
 
+    <div id="background">
+        <img id="mainImage" src="">
+    </div>
     <div class="toast toast-error hide">
         <button class="btn btn-clear float-right"></button>
         City not found, we have revert to your latest search - or - our default city
@@ -26,7 +29,7 @@
 
 
     <header class="container">
-        <h3>Weather Dashboard</h3>
+        <h4>Studio Ghibli Weather Dashboard</h4>
     </header>
     <main class="container">
         <div class="columns">
@@ -75,6 +78,7 @@
                     <div id="largeInfoHolder">
                         <h2 id="mainCity"></h2>
                         <p id="currentDate"></p>
+                        <p id="currentWeather"></p>
                         <h1 id="mainTemp"></h1>
                         <p>Wind: <mainWind></mainWind> mph | Humidity: <mainHumidity></mainHumidity> %</p>
                         
@@ -82,7 +86,6 @@
                     </div>
 
                 </div>
-                <h4>5-day Forecast</h4>
                 <ul id="fiveDayForecast"> 
                    
                 </ul>
