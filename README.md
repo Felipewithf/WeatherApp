@@ -40,6 +40,11 @@ Image background matches the current weather of the city
 - Type an invalid city and an Error toast UI will appear -  handling respons 404 from api
  ![Error toast UI on invalid city](assets/img/s3.png)
 
+## css framework
+
+Spectre for buttons and input field
+https://picturepan2.github.io/spectre/
+
 ## time estimates
 
 7 hours
