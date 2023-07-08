@@ -1,5 +1,12 @@
-
 var mainCity = "toronto";
+
+if (localStorage.getItem("city") === null){
+  mainCity = "toronto";
+}else{
+  mainCity = localStorage.getItem("city");
+}
+
+console.log(localStorage.city);
 
 fetchThedata(mainCity);
 
@@ -27,6 +34,7 @@ function fetchThedata(city) {
                 displayErrorToast();
                 return;
             } else {
+                localStorage.setItem("city",city);
                 return response.json();
             }
         })
@@ -46,7 +54,6 @@ function renderCurrentMainCity(data) {
     $('mainWind').text(data.wind.speed);
     $('mainHumidity').text(data.main.humidity);
     $('#mainImage').attr("src",`assets/img/${data.weather[0].icon}_f.png`);
-
 }
 
 function renderFiveDayForecast(data) {
