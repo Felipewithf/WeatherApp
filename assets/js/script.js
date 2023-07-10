@@ -1,12 +1,18 @@
 var mainCity = "toronto";
 
-if (localStorage.getItem("city") === null){
-  mainCity = "toronto";
-}else{
-  mainCity = localStorage.getItem("city");
-}
+var quickCitySelection = ["Toronto","Bogota", "Miami", "Paris", "Toykyo", "Buenos Aires", "Milan", "Beijing", "Sydney", "Potosi", "Bangkok", "Seoul", "Dhaka", "cairo", "Prague", "Athens"];
 
+if (localStorage.getItem("city") === null) {
+    mainCity = "toronto";
+} else {
+    mainCity = localStorage.getItem("city");
+}
 console.log(localStorage.city);
+
+
+
+//render quick city selections buttons
+renderQuickCityBtns(mainCity);
 
 fetchThedata(mainCity);
 
@@ -34,13 +40,23 @@ function fetchThedata(city) {
                 displayErrorToast();
                 return;
             } else {
-                localStorage.setItem("city",city);
+                localStorage.setItem("city", city);
                 return response.json();
             }
         })
         .then((data) => {
             renderCurrentMainCity(data);
         });
+}
+
+
+function renderQuickCityBtns(mainCity) {
+    $("#citySelector").children().remove();
+    quickCitySelection.unshift(mainCity);
+    quickCitySelection.forEach(element => {
+        var newbutton = $("<button>", { "class": "btn city" }).text(element);
+        $('#citySelector').append(newbutton);
+    });
 }
 
 
@@ -53,7 +69,7 @@ function renderCurrentMainCity(data) {
     $('#currentWeather').text(`${data.weather[0].main}`);
     $('mainWind').text(data.wind.speed);
     $('mainHumidity').text(data.main.humidity);
-    $('#mainImage').attr("src",`assets/img/${data.weather[0].icon}_f.png`);
+    $('#mainImage').attr("src", `assets/img/${data.weather[0].icon}_f.png`);
 }
 
 function renderFiveDayForecast(data) {
@@ -109,6 +125,7 @@ function lookForCity(event) {
     mainCity = $("#input-city").val();
     eraseOldForecast();
     fetchThedata(mainCity);
+    renderQuickCityBtns(mainCity);
 }
 
 function switchCity(event) {
