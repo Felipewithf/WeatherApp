@@ -1,6 +1,6 @@
 var mainCity = "toronto";
 
-var quickCitySelection = ["Toronto","Bogota", "Miami", "Paris", "Toykyo", "Buenos Aires", "Milan", "Beijing", "Sydney", "Potosi", "Bangkok", "Seoul", "Dhaka", "cairo", "Prague", "Athens"];
+var quickCitySelection = ["Toronto","Bogota", "Miami", "Paris", "Tokyo", "Buenos Aires", "Milan", "Beijing", "Sydney", "Potosi", "Bangkok", "Seoul", "Dhaka", "Cairo", "Prague", "Athens"];
 
 if (localStorage.getItem("city") === null) {
     mainCity = "toronto";
